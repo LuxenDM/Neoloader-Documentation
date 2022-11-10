@@ -1,0 +1,24 @@
+lib.mod_read_str
+
+Definition:
+	lib.mod_read_str (id, version, header, key) -> ini_value
+Description:
+	retrieves a string value from the registered mod's ini file
+Arguments:
+	id = string ID of the registered mod
+	version = string version of the registered mod
+	header = string header of the value to be read
+	key = string key of the value to be read
+Returns:
+	ini_value = string value from the ini file
+
+notes:
+	reminder, INI files are set up in the format:
+	[header]
+	key=value
+	
+	if header isn't provided, [modreg] is assumed
+	if key isn't provided, "name" is assumed
+	if the header or key don't exist, "" will be returned
+	
+	TODO: verify we're using the correct path value

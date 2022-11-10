@@ -1,0 +1,157 @@
+Neoloader uses ini files to handle registration of mods. These INI
+files have to follow certain standards, in order to ensure compatibility for Neoloader.<br>
+<br>
+Example of a registration file:<br>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top;"><address>[modreg]</address><address>
+
+type=library</address><address>
+
+id=glib</address><address>
+
+name=General Library</address><address>
+
+version=1</address><address>
+API=3</address><address>
+
+
+author=Luxen</address><address>
+
+website=http://vendetta-online.com/</address><address>
+
+path=mod.lua</address>
+
+<address><br>
+
+[dependency]</address><address>
+
+num_dependents=2</address><address>
+
+depid1=multiui</address><address>
+
+depvs1=6</address><address>
+
+depid2=json</address><address>
+
+
+
+depvs2=2</address><br></td></tr></tbody></table><br>
+<br>
+<table style="text-align: left;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold;">[modreg]<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold;">The
+header containing most of a mod's registration data</td>
+
+    </tr>
+
+    <tr>
+      <td style="vertical-align: top;">type<br>
+      </td>
+      <td style="vertical-align: top;">A descriptor of what a mod "is".
+This can be used for sorting mods in the in-game manager. currently
+unused.</td>
+    </tr>
+    <tr>
+
+
+
+
+      <td style="vertical-align: top;">id<br>
+
+      </td>
+      <td style="vertical-align: top;">this is the access ID for a mod;
+any other mod will refer to this id. "null" is invalid.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">name<br>
+
+
+
+      </td>
+
+      <td style="vertical-align: top;">This is the public name of the
+mod, what a user expects to see.</td>
+
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">version<br>
+      </td>
+
+
+      <td style="vertical-align: top;">This is the version of this
+specific mod. Mods with the same id and
+version cannot be loaded together; always use a unique version number.
+Also, this must specifically be an integer number. mod version 0 will
+result in different behavior, so start at 1. For more information, see
+"mod versioning"</td>
+
+    </tr>
+
+    <tr><td style="vertical-align: top;">API<br></td><td style="vertical-align: top;">This should match the current API of Neoloader<br></td></tr><tr>
+      <td style="vertical-align: top;">author<br>
+
+      </td>
+
+
+      <td style="vertical-align: top;"> Name of the author(s) of this
+mod. </td>
+
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">website<br>
+
+      </td>
+      <td style="vertical-align: top;">currently unused; a mod manager
+could allow the user to
+quickly access this website to check for updates </td>
+
+
+
+    </tr>
+    <tr>
+
+      <td style="vertical-align: top;">path<br>
+      </td>
+      <td style="vertical-align: top;"> This is the path to the mod's
+code file. If no path and only a
+file name is provided, the path of the INI file is used instead. If
+your mod is a library to be distributed with other mods, don't use a
+path, only the file name. </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+<br>
+
+<table style="text-align: left;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold; background-color: rgb(204, 204, 204);">[dependency]<br>
+
+      </td>
+
+      <td style="vertical-align: top; font-weight: bold; background-color: rgb(204, 204, 204);">The header containing a list of
+the mod's dependencies.
+All must be met before the mod will load.&nbsp; <br></td>
+    </tr>
+
+
+    <tr>
+      <td style="vertical-align: top;">num_dependents<br>
+      </td>
+
+      <td style="vertical-align: top;">How many mods this one depends on.
+      </td>
+
+
+    </tr><tr><td style="vertical-align: top;">depid#<br></td><td style="vertical-align: top;"> the mod_id of the #th dependency</td></tr><tr><td style="vertical-align: top;">depvs#<br></td><td style="vertical-align: top;">the mod version of the #th dependency (0 means any version)</td></tr>
+
+  </tbody>
+</table>
+<br>if there are no dependencies, num_dependents should be 0, not missing.<br>Neoloader will try to add stand-in information for mods missing details, but it is best practice to include all tags to best represent your mod.<br>
+<br>
+<br>

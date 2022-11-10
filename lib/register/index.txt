@@ -1,0 +1,13 @@
+lib.register
+
+Definition:
+	lib.register (path_to_ini_file) -> boolean status, number error_id
+Description:
+	Registers the new mod for use with Neoloader
+Arguments:
+	string path_to_ini_file: path_to_file of a mod registration ini
+Returns:
+	boolean status: true or false
+	number error_id: an error number if the status is false
+
+notes:

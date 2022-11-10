@@ -1,0 +1,25 @@
+
+lib.set_class<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.set_class (mod_id, mod_version, mod_class) :: nil</li>
+</ul>
+Description:<br>
+<ul>
+<li>saves the mod's class table<br>
+</li>
+</ul>
+Arguments:<br>
+<ol>
+<li>string mod_id: the mod who's class is to be stored</li><li>string mod_version: the version of the mod who's class is to be stored</li><li>table mod_class: the table containing the mod's public functions and variables<br></li>
+</ol>
+Returns:<br>
+<ul>
+<li>nil<br>
+</li>
+</ul>
+Other notes:<br>
+<ul>
+<li>this function fails if the mod isn't loaded or has been locked. if unlocked, the class is replaced, not added to.<br>
+</li>
+</ul>

@@ -1,0 +1,14 @@
+lib.log_error
+
+Definition:
+	lib.log_error(...) -> nil
+Description:
+	Logs the provided variable(s) and optionally echos it back to the console
+	This log is accessed in lib.get_gstate()
+Arguments:
+	...: anything acceptable by console_print()
+Returns:
+	nil
+
+issues:
+	Needs sanity-checking!

@@ -1,0 +1,14 @@
+lib.check_queue
+
+Definition:
+	lib.check_queue () -> nil
+Description:
+	Used to manually check all functions delayed by lib.require
+Arguments:
+	None
+Returns:
+	Nil
+
+notes:
+
+This is called after mods get activated, so calling this will likely not do anything at any other time.

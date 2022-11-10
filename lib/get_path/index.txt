@@ -1,0 +1,14 @@
+lib.get_path
+
+Definition:
+	lib.get_path (id, version) -> path_to_mod
+Description:
+	retrieves the path of the mod
+Arguments:
+	id = string ID of registered mod
+	version = string version of registered mod
+Returns:
+	path = string file path
+
+notes:
+	useful for bundled mods that have extra files

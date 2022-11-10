@@ -1,0 +1,16 @@
+lib.lock_class
+
+Definition:
+	lib.lock_class (id, version, key) -> nil
+Description:
+	Locks the mod to prevent changes to its function table
+Arguments:
+	id = string ID of the registered mod
+	version = string version of the registered mod
+	key = string locking value, must be provided to unlock
+Returns:
+	nil
+
+notes:
+	if a key isnt provided, lib.generate_key() is called
+	the value isn't returned, so the mod can't be unlocked...

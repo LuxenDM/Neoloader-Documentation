@@ -1,0 +1,30 @@
+lib.get_state
+
+Definition:
+	lib.get_state (id, version) -> output_table
+Description:
+	Obtains the registry information of a mod
+Arguments:
+	string id: ID of a registered mod
+	string version: version of a registered mod
+Returns:
+	output_table {
+		load = string loadstate
+		complete = boolean "mod has loaded successfully"
+		dependencies_met = boolean "mod's dependencies all are met"
+		load_position = number index of load order
+		errors = ???
+		latest = string latest version of this mod
+		mod_id = ID of this mod
+		mod_version = version of this mod
+		mod_type = string arbitrary value of "type" value in mod's ini file
+		mod_name = string user-facing/public name of this mod
+		mod_author = string author of this mod
+		mod_link = string URL of this mod
+		mod_folder = string path to this mod/lib
+	}
+	
+	output_table can be {} if the mod isn't found/doesn't exist
+
+notes:
+	

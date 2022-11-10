@@ -1,0 +1,16 @@
+lib.notify
+
+Definition:
+	lib.notify (status, ...) -> nil
+Description:
+	a generic notification handler sent to the current manager
+Arguments:
+	status = string notification status to pass
+	... = arguments of the status
+Returns:
+	nil
+
+notes:
+	TODO: add arguments
+	
+	How notifications are handled are dependent on the active system manager; Neoloader only passes it off

@@ -1,0 +1,14 @@
+lib.is_ready
+
+Definition:
+	lib.is_ready (id, version) -> boolean status
+Description:
+	checks to see if the provided mod has been activated by Neoloader
+Arguments:
+	string id: ID of the mod to check for
+	string version: version of the mod to check
+Returns:
+	boolean status: true if activated, false otherwise
+
+notes:
+	works a lot like lib.is_exist

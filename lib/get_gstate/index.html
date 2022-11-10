@@ -1,0 +1,50 @@
+
+lib.get_gstate<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+  <li>lib.get_gstate (): table general_state_table<br>
+  </li>
+</ul>
+Description:<br>
+<ul>
+  <li>Retrieves a table of data describing Neoloader's general state<br>
+  </li>
+</ul>
+Arguments:<br>
+<ol>
+  <li>None</li>
+</ol>
+Returns:<br>
+<ul>
+  <li>table general_state_table: A table holding Neoloader's relevant
+read-only information</li>
+</ul>
+Table Definitions:<br>
+<table style="text-align: left;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">version<br>
+      </td>
+      <td style="vertical-align: top;">unique version information of
+the currently installed Neoloader instance
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">pathlock<br>
+      </td>
+      <td style="vertical-align: top;">A boolean defining if standard dofile/loadfile have preset paths (this occurs during the default plugin loader)<br></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">statelock<br>
+      </td>
+      <td style="vertical-align: top;">A boolean defining if globals can be assigned normally, or if declare() is neccesary<br>
+      </td>
+    </tr><tr><td style="vertical-align: top;">manager<br></td><td style="vertical-align: top;">The mod_ID of the current management interface for Neoloader<br></td></tr><tr><td style="vertical-align: top;">ifmgr<br></td><td style="vertical-align: top;">The mod_ID of the current interface manager for Neoloader<br>if no interface manager exists, this will return vo-if<br></td></tr><tr><td style="vertical-align: top;">notifications<br></td><td style="vertical-align: top;">(depreciate?) A list of all notification states sent to Neoloader<br></td></tr><tr><td style="vertical-align: top;">log<br></td><td style="vertical-align: top;">The complete data log in Neoloader<br></td></tr><tr><td style="vertical-align: top;">modlist<br></td><td style="vertical-align: top;">A list of every mod currently managed by Neoloader<br></td></tr><tr><td style="vertical-align: top;">mgr_list<br></td><td style="vertical-align: top;">A list of all mods that can be set as Neoloader management interfaces<br></td></tr><tr><td style="vertical-align: top;">if_list<br></td><td style="vertical-align: top;">A list of all mods that can be set as Neoloader interface managers<br></td></tr>
+  </tbody>
+</table>
+<br>
+Other notes:<br>
+<ul>
+  <li><br>
+  </li>
+</ul>

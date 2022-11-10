@@ -1,0 +1,26 @@
+
+lib.activate_mod<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.mod_read_str (id, version, header, key) :: ini_value</li>
+</ul>
+Description:<br>
+<ul>
+<li>Reads the key item from the selected mod's registration INI file<br></li>
+</ul>
+Arguments:<br>
+<ol>
+<li>string id: name of the mod to be read from<br></li>
+<li>string version: version of the mod to be read from<br></li>
+<li>string header: The [header] to look under</li><li>string key: the key of the item to check<br></li>
+</ol>
+Returns:<br>
+<ul>
+<li>string ini_value: The value stored in the INI file at [header], key. "" is returned if the key doesnt exist.<br>
+</li>
+</ul>
+Other notes:<br>
+<ul>
+<li>If repeated access is required, obtaining the mod's registration path and using gkini.readstring2 may be more efficient.<br>
+</li>
+</ul>

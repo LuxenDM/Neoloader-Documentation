@@ -1,0 +1,13 @@
+lib.generate_key
+
+Definition:
+	lib.generate_key () -> key
+Description:
+	creates a randomized key
+Arguments:
+	none
+Returns:
+	key = string key
+
+notes:
+	key is a SHA1 string

@@ -1,0 +1,39 @@
+
+lib.err_handle<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+  <li>lib.&lt;do this&gt; (boolean conditional, string message) :: nil</li>
+</ul>
+Description:<br>
+<ul>
+  <li>Functions similar to Assert, but only logs the error with
+traceback when the conditional is wrong. <br>
+  </li>
+</ul>
+Arguments:<br>
+<ol>
+  <li>boolean conditional: the condition to test for a handled error</li>
+  <li>string message: the message to log alongside the stack traceback<br>
+  </li>
+</ol>
+Returns:<br>
+<ul>
+  <li>False for no error, true for an error (will be swapped soon)<br>
+  </li>
+</ul>
+Other notes:<br>
+<ul>
+  <li>This function is used by Neoloader internally, to capture errors
+during startup that would otherwise cause the game to close. For normal
+plugins, Assert() should be fine.</li>
+  <li>A global Neoloader setting can allow err_handle to error(), if
+desired. The error() is only triggered after the "PLUGINS_LOADED" event
+is triggered.</li>
+  <li>This function sends a "handled error" notification; the resulting
+behavior of that will depend on your active management engine</li>
+  <ul>
+    <li>neomgr, the manager bundled with Neoloader, ignores this
+notification entirely. <br>
+    </li>
+  </ul>
+</ul>

@@ -1,0 +1,15 @@
+lib.activate_mod
+
+Definition:
+	lib.activate_mod (id, version, verification_key) -> nil
+Description:
+	attempts to activate a mod in the registry
+Arguments:
+	string id: name of the mod to be activated
+	string version: version of the mod to be activated
+	verification_key: a security key given to Neoloader's active management system
+Returns:
+	Nil
+
+notes:
+	Mods shouldn't try to self-load, as we want the user to manually enable mods. Hence why this function requires a key to be used.

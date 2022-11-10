@@ -1,0 +1,13 @@
+lib.uninstall
+
+Definition:
+	lib.uninstall (admin key) -> nil
+Description:
+	Uninstalls Neoloader so the mod can be safely removed
+Arguments:
+	admin key = string key given to the active system manager
+Returns:
+	
+
+notes:
+	

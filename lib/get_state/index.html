@@ -1,0 +1,44 @@
+lib.get_state<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+  <li>lib.get_state (id, version) :: mod_state_table<br>
+  </li>
+</ul>
+Description:<br>
+<ul>
+  <li>Retrieves the state information of the selected mod<br>
+  </li>
+</ul>
+Arguments:<br>
+<ol>
+  <li>string id: name of the mod to be activated</li>
+  <li>string version: version of the mod to be activated</li>
+</ol>
+Returns:<br>
+<ul>
+  <li>table mod_state: A table describing the mod's current state
+within the Neoloader registry</li>
+</ul>
+table definition:<br>
+<table style="text-align: left;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">load<br>
+      </td>
+      <td style="vertical-align: top;">string "YES" or "NO" - is the mod set to be loaded when Neoloader starts<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">complete<br>
+      </td>
+      <td style="vertical-align: top;">boolean - did the mod complete successfully<br>
+      </td>
+    </tr><tr><td style="vertical-align: top;">dependencies_met<br></td><td style="vertical-align: top;">boolean - are all dependencies declared by the mod satisfied<br></td></tr><tr><td style="vertical-align: top;">load_position<br></td><td style="vertical-align: top;">number - What order the mod was loaded in compared to all registered mods<br></td></tr><tr><td style="vertical-align: top;">errors<br></td><td style="vertical-align: top;">table - list of errors associated with this mod<br>(not currently generated! This list will be empty!)<br></td></tr><tr><td style="vertical-align: top;">latest<br></td><td style="vertical-align: top;">string - the latest version of this mod<br></td></tr><tr><td style="vertical-align: top;">mod_id<br></td><td style="vertical-align: top;">string - the mod's ID<br></td></tr><tr><td style="vertical-align: top;">mod_version<br></td><td style="vertical-align: top;">string - the mod's current version<br></td></tr><tr><td style="vertical-align: top;">mod_type<br></td><td style="vertical-align: top;">string - descriptor of the mod, set by the author in the registration file<br>(Not used by Neoloader, intended for managers)<br></td></tr><tr><td style="vertical-align: top;">mod_name<br></td><td style="vertical-align: top;">string - public name of the mod<br></td></tr><tr><td style="vertical-align: top;">mod_author<br></td><td style="vertical-align: top;">string - author of this mod<br></td></tr><tr><td style="vertical-align: top;">mod_link<br></td><td style="vertical-align: top;">string - hyperlink to this mod's home page<br></td></tr><tr><td style="vertical-align: top;">mod_folder<br></td><td style="vertical-align: top;">string - path to the mod's folder<br></td></tr><tr><td style="vertical-align: top;">mod_ini_file<br></td><td style="vertical-align: top;">string - path to the mod's INI file<br></td></tr>
+  </tbody>
+</table>
+<br>
+<br>
+Other notes:<br>
+<ul>
+  <li>Some of these details are not neccesary for Neoloader itself</li></ul><ul><li>load position may be useful for debugging if two conflicting mods are loaded? obtain the two mod's load position and swap them to attempt in-game error resolution?<br></li>
+</ul>

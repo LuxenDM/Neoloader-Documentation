@@ -1,0 +1,13 @@
+lib.get_patch
+
+Definition:
+	lib.get_patch () -> patch
+Description:
+	quick retrieval of Neoloader's patch number
+Arguments:
+	none
+Returns:
+	patch = number of current patch
+
+notes:
+	the patch count is increased on every update, and never resets

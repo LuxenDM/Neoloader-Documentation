@@ -1,0 +1,13 @@
+lib.get_latest
+
+Definition:
+	lib.get_latest (id) -> version
+Description:
+	obtains the latest version of a mod registered in Neoloader
+Arguments:
+	string id: id of the mod to check
+Returns:
+	string version: version of the mod's latest in the registry
+
+notes:
+	

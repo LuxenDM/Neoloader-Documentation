@@ -1,0 +1,15 @@
+lib.unlock_class
+
+Definition:
+	lib.unlock_class (id, version, key) -> nil
+Description:
+	Unlocks a locked mod
+Arguments:
+	id = string ID of registered mod
+	version = string version of registered mod
+	key = string key required to unlock
+Returns:
+	nil
+
+notes:
+	

@@ -1,0 +1,14 @@
+lib.require
+
+Definition:
+	lib.require (input_table, callback) -> nil
+Description:
+	delays callback() until the mod list of input_table is loaded
+	This is useful for making "soft dependencies" for additional optional functionality in a mod.
+Arguments:
+	input_table: a table of mod IDs. use formatting from lib.resolve_dep_table
+	function callback: function to execute later
+Returns:
+	nil
+
+notes:

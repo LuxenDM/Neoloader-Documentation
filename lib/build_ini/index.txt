@@ -1,0 +1,20 @@
+lib.build_ini
+
+Definition:
+	lib.build_ini(file_pointer) -> table or false
+Description:
+	compiles Neoloader-relevant information from an ini file
+Arguments:
+	string file_pointer: a path_to_file string pointing to a mod's .ini registration
+Returns:
+	if found and appears valid:
+		table file_results: a table of information on this mod
+	if not found or formatted incorrectly:
+		boolean error: false
+		number error_id: 100 or 102
+
+notes:
+
+As long as the modreg key "id" exists and isn't "null", the ini should be compiled with default information at minimum.
+
+the table that is built is stored locally - if the file is attempted to access again, or if another mod with the same id and version is detected, it will not compile and instead just return the already built table.

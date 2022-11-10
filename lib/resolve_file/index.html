@@ -1,0 +1,23 @@
+
+lib.resolve_file<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.resolve_file (file, path, path_2) :: nil</li>
+</ul>
+Description:<br>
+<ul>
+<li>Attempts to load and execute a file using a variety of path options. This function attempts to make file loading behavior consistant across the game's state.<br>
+</li>
+</ul>
+Arguments:<br>
+<ol>
+<li>string file: file name to be accessed</li><li>string path: path to the file to be accessed</li><li>string path_2: alternate path to check<br></li>
+</ol>
+Returns:<br>
+<ul>
+<li>boolean status: true if the file loaded successfully<br></li><li>...: results of the file, or a string error message<br>
+</li>
+</ul>
+Other notes:<br>
+<ul>
+<li>if path is nil, this function attempts to split the file argument into a path/file pair for you.</li></ul>

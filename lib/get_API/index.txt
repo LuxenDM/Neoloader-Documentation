@@ -1,0 +1,13 @@
+lib.get_API
+
+Definition:
+	lib.get_API () -> API
+Description:
+	quick retrieval of Neoloader's current API implementation
+Arguments:
+	none
+Returns:
+	API = number API version
+
+notes:
+	Mods being registered may have to have matching API versions to this value, depending on the user's configuration

@@ -1,0 +1,199 @@
+All public API functions and variables are listed below. Unless otherwise stated, everything is stored within the public table "lib"<br>
+<br>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr><td style="vertical-align: top;">NEO_EXISTS<br></td><td style="vertical-align: top;">(Global) Boolean true when Neoloader has started. <br></td></tr><tr><td style="vertical-align: top;">NEO_UNINSTALL<br></td><td style="vertical-align: top;">(Global) Boolean false when Neoloader installing the first time, true when told to uninstall. otherwise, shouldn't exist.<br></td></tr><tr><td style="vertical-align: top;">[0] = "LME"<br></td><td style="vertical-align: top;">string defining the public table "lib" as a 'Library Management Engine'; used for verifying if Neoloader (or compatible alternative) is installed or not. See more in <a href="../overview.html">Overview</a><br></td></tr><tr><td style="vertical-align: top;">[1] = "Neoloader"<br></td><td style="vertical-align: top;">string defining the creator of public table "lib"; just like [0], this is meant for verifying Neoloader as the creator of the lib table (as opposed to any future alternatives)<br></td></tr><tr>
+      <td style="vertical-align: top;"><a href="activate_mod/index.html">activate_mod</a><br>
+      </td>
+      <td style="vertical-align: top;">Launches the selected Mod
+(requires an authentication key)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="build_ini/index.html">build_ini</a><br>
+      </td>
+      <td style="vertical-align: top;">Constructs a Neoloader-relevant
+table from an INI file<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="check_queue/index.html">check_queue</a><br>
+      </td>
+      <td style="vertical-align: top;">Manually checks if delayed
+functions can be run<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="err_handle/index.html">err_handle</a><br>
+      </td>
+      <td style="vertical-align: top;">Functions similarly to Assert,
+but logs and returns instead of halting the lua engine during game
+start.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="execute/index.html">execute</a><br>
+      </td>
+      <td style="vertical-align: top;">Activates a single function from
+a mod's set class<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="generate_key/index.html">generate_key</a><br>
+      </td>
+      <td style="vertical-align: top;">Creates a randomized key based
+on the SHA1 function<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="get_API/index.html">get_API</a><br>
+      </td>
+      <td style="vertical-align: top;">Gets the current API version of
+Neoloader<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="get_class/index.html">get_class</a><br>
+      </td>
+      <td style="vertical-align: top;">Gets a mod's class table<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="get_gstate/index.html">get_gstate</a><br>
+      </td>
+      <td style="vertical-align: top;">Gets Neoloader's general state<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="get_latest/index.html">get_latest</a><br>
+      </td>
+      <td style="vertical-align: top;">Gets the latest version of a mod<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="get_patch/index.html">get_patch</a><br>
+      </td>
+      <td style="vertical-align: top;">Gets the current patch version
+(additions to the API that don't change it)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="get_path/index.html">get_path</a><br>
+      </td>
+      <td style="vertical-align: top;">Gets the folder path of a mod<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="get_state/index.html">get_state</a><br>
+      </td>
+      <td style="vertical-align: top;">Gets a mod's state information
+in Neoloader<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="is_exist/index.html">is_exist</a><br>
+      </td>
+      <td style="vertical-align: top;">Tests if a mod exists in
+Neoloader's registry<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="is_ready/index.html">is_ready</a><br>
+      </td>
+      <td style="vertical-align: top;">Tests if a mod in Neoloader's
+registry has been activated<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="lock_class/index.html">lock_class</a><br>
+      </td>
+      <td style="vertical-align: top;">Prevents changes to a mod's
+class table<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="log_error/index.html">log_error</a><br>
+      </td>
+      <td style="vertical-align: top;">Print(), but for Neoloader. Use
+this to have your mod's debug messages added to Neoloader's log.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="mod_read_str/index.html">mod_read_str</a><br>
+      </td>
+      <td style="vertical-align: top;">Reads a string from a mod's
+registration file<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="notify/index.html">notify</a><br>
+      </td>
+      <td style="vertical-align: top;">Sends a notification to
+Neoloader's current management interface<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="open_config/index.html">open_config</a><br>
+      </td>
+      <td style="vertical-align: top;">Opens the currently set
+management engine for Neoloader<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="open_if_config/index.html">open_if_config</a><br>
+      </td>
+      <td style="vertical-align: top;">Opens the currently set
+interface manager for Neoloader<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="register/index.html">register</a><br>
+      </td>
+      <td style="vertical-align: top;">Register a new mod into Neoloader<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="require/index.html">require</a><br>
+      </td>
+      <td style="vertical-align: top;">Delays a function until the
+provided list of dependencies are met<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="resolve_dep_table/index.html">resolve_dep_table</a><br>
+      </td>
+      <td style="vertical-align: top;">Tests if the provided list of
+dependencies are met<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="resolve_file/index.html">resolve_file</a><br>
+      </td>
+      <td style="vertical-align: top;">Tries to load and execute the
+provided file<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="set_class/index.html">set_class</a><br>
+      </td>
+      <td style="vertical-align: top;">Sets the class table of a mod<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="uninstall/index.html">uninstall</a><br>
+      </td>
+      <td style="vertical-align: top;">Removes Neoloader and closes the
+game (requires an authentication key)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="unlock_class/index.html">unlock_class</a><br>
+      </td>
+      <td style="vertical-align: top;">Removes a lock on a mod's class
+table<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>

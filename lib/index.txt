@@ -1,0 +1,13 @@
+template
+
+Definition:
+	lib.template () -> nil
+Description:
+	
+Arguments:
+	
+Returns:
+	
+
+notes:
+	

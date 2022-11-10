@@ -1,0 +1,64 @@
+
+Creating plugins compatible with Neoloader means following certain
+design principles, but the effort will provide benefits to your
+plugin's users.<br>
+First off, while normal plugins only require a single 'main.lua' file
+containing the plugin's code, in the usage of Neoloader a plugin will
+require three:<br>
+<table style="text-align: left; width: 40%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: middle; text-align: left;">
+      <ul>
+        <li>Main.lua</li>
+        <li>&lt;name&gt;.ini</li>
+        <li>&lt;name&gt;.lua</li>
+      </ul>
+      </td>
+      <td style="vertical-align: middle; text-align: center;"><img src="files.png" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+In this case, main.lua is used exclusively to verify the registration
+process of your plugin; You can include other code in it, but this code
+will continue to be loaded by the old plugin loader and won't be
+managable by Neoloader.<br>
+<br>
+The INI file here is the plugin's "registration" details, and <a href="ini.html">the formatting can be viewed on this page</a>. This
+contains the data Neoloader needs for determining your plugin's load
+position, plus other optional information.<br>
+<br>
+The third file is what would contain your actual mod's code. Once
+registered and activated, this is the file that is executed. The INI
+file should point to this, with a relative or absolute file path.<br>
+<br>
+<br>
+<br>
+<br>
+<hr style="width: 100%; height: 2px;">Converting plugins *can* be
+pretty simple, if you only want to manage your existing mods using
+Neoloader.<br>
+<ul>
+  <li>If your mod accesses other files, you will need to change how
+files are accessed. Neoloader loads BEFORE the standard mod loader, so
+dofile/loadfile do not automatically contain preset paths. Neoloader
+provides lib.resolve_file() to improve potential file access, allowing
+multiple attempts at locating a file.</li>
+</ul>
+In order to convert your old plugins to be managed through Neoloader,
+just follow these steps:<br>
+<ol>
+  <li>Rename your main.lua file</li>
+  <ul>
+    <li>WHAT you rename it to doesn't matter, other than that you will
+be providing this name in the mod's registration file</li>
+  </ul>
+  <li>Create and complete a mod registration file describing your
+plugin (see <a href="ini.html">INI registration</a> for more
+information)</li>
+  <li>Create a new main.lua file that registers your mod with Neoloader</li>
+</ol>
+(insert tricks for keeping plugins Neoloader-not-dependent below)<br>
+<br>

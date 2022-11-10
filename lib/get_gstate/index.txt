@@ -1,0 +1,28 @@
+lib.get_gstate
+
+Definition:
+	lib.get_gstate () -> Neoloader_state
+Description:
+	Returns information on Neoloader's current state
+Arguments:
+	none
+Returns:
+	Neoloader_state {
+		version = {
+			[1] = number "Version major"
+			[2] = number "Version minor"
+			[3] = string "Release channel"
+		}
+		pathlock = boolean file pathlock (see pathlock page)
+		statelock = boolean globals can be assigned without declare()
+		manager = string Mod ID of the current Neoloader system manager
+		ifmgr = string Mod ID of the current Neolaoder interface manager
+		notifications = table of all submitted notifications
+		log = table of all submitted logs
+		modlist = table of registered mods
+		mgr_list = table of Neoloader managers
+		if_list = table of Interface managers
+	}
+
+notes:
+	

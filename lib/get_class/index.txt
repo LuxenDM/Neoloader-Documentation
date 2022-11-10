@@ -1,0 +1,15 @@
+lib.get_class
+
+Definition:
+	lib.get_class (id, version) -> mod's_function_table
+Description:
+	Obtains the function table of the activated mod
+Arguments:
+	id = string ID of the activated mod
+	version = string version of the activated mod
+Returns:
+	function_table of the activated mod
+
+notes:
+	returns nil if the mod isn't loaded or doesn't exist
+	TODO: switch to is_ready instead of get_state().complete

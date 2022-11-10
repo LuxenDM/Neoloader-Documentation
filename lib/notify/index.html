@@ -1,0 +1,22 @@
+
+lib.notify<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.notify (notification_status, ...) :: nil</li>
+</ul>
+Description:<br>
+<ul>
+<li>Sends a notification to Neoloader's active manager<br></li>
+</ul>
+Arguments:<br>
+<ol>
+<li>string notification_status: the status to be communicated</li><li>...: any additional values relevant to the communication<br></li></ol>
+Returns:<br>
+<ul>
+<li>nil<br>
+</li>
+</ul>
+Other notes:<br>
+<ul>
+<li>The behavior of the notification system is dependent on the activated manager; for the bundled neomgr, only a few statuses are expected, and the rest are ignored.</li><li>This feature is meant to be used for communicating to the user through a unified method; for internal use, Vendetta Online's existing event management system works perfectly fine.<br></li>
+</ul>

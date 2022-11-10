@@ -1,0 +1,1 @@
+sometimes you may want to distribute a library alongside your plugin, instead of expecting each library to be loaded independently. The library should take this design into consideration; the path to any files it relies on may not always be the same.

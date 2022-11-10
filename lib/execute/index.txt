@@ -1,0 +1,20 @@
+lib.execute
+
+Definition:
+	lib.execute (id, version, function_name, ...) -> ...
+Description:
+	Executes a single function within the provided mod
+Arguments:
+	id = string ID of activated mod
+	version = string version of activated mod
+	function_name = string name of function to access
+	... = arguments provided to the function
+Returns:
+	... = values returned by the function
+	OR
+	... = value of the not-a-function 
+	OR
+	... = nil if mod isn't found
+
+notes:
+	if a non-function value is stored with lib.set_class, this will retrieve that value and return it

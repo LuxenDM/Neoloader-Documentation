@@ -1,0 +1,15 @@
+lib.is_exist
+
+Definition:
+	lib.is_exist (id, version) -> bool status
+Description:
+	checks if a mod exists in Neoloader's registry. The mod doesn't have to be loaded.
+Arguments:
+	string id: registered ID of the mod
+	string version: specific version of the mod
+		if 0 or nil, the latest version is assumed
+Returns:
+	boolean status: true if the mod exists, otherwise false
+
+notes:
+	

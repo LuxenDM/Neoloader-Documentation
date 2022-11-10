@@ -1,0 +1,21 @@
+lib.resolve_dep_table
+
+Definition:
+	lib.resolve_dep_table (input_table) -> boolean status
+Description:
+	When provided a table of mod IDs, checks if all exist and returns the result.
+Arguments:
+	input_table: table of mod IDs in format
+		{
+			{
+				name = mod_name
+				version = mod_version
+			}
+			...
+		}
+Returns:
+	boolean status: true if all mods in the table are "ready", otherwise false
+		mods must be loaded! existing isn't enough!
+
+notes:
+	TODO! Sanity-checking the input table!
