@@ -1,0 +1,1 @@
+lib.log_error("This file will only launch if core2.lua is launched, because it is set as hard dependent on it")

@@ -1,0 +1,18 @@
+lib.request_auth<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.request_auth (function callback) :: nil :: Neoloader auth key if successful<br></li>
+</ul>
+Description:<br>
+<ul>
+<li>Allows a plugin to request the auth key, necessary for triggering lib.uninstall and lib.activate. This key is granted if the user selects to allow it.<br></li>
+</ul>
+Arguments:<br>
+<ol>
+<li>function callback(key): This function is called if the user selects to give the plugin the auth key<br> </li>
+</ol>
+Returns:<br>
+<ul>
+<li>nil: This function does not return anything</li><li>string key: the callback function will be called with a string argument containing the key <span style="font-style: italic; text-decoration: underline;">if</span> the user selects to authenticate the plugin<br></li>
+</ul>
+Other notes:<br><ul><li>This should be used only in one-off situations or for on-the-fly executed code; for dedicated plugins, changing the plugin's load state to "AUTH" will let it have the auth key when it initially loads. Neoloader's registered management utility will by default also get the auth key, regardless of load state.<br></li></ul>

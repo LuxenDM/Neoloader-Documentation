@@ -1,0 +1,19 @@
+lib.compare_sem_ver<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.compare_sem_ver (version string 1, version string 2) :: number result<br></li>
+</ul>
+Description:<br>
+<ul>
+<li>Compare two version strings and determine which is higher<br></li>
+</ul>
+Arguments:<br>
+<ol>
+<li>string version 1: version to compare against<br></li>
+<li>string version 2: version being compared<br></li></ol>
+Returns:<br>
+<ul>
+<li>number result: -1 if the first argument is higher, 1 if the second argument is higher. returns 0 if both arguments appear the same<br>
+</li>
+</ul>
+Other notes:<br><ul><li>Version strings are broken apart using <a href="../get_whole_ver/index.html">lib.get_whole_ver</a>. <br></li><li>While the naming of the function intends for Semantic versioning to be used, as long as the versions being compared are breakable with get_whole_ver and consistant in numbering, this function should work just fine.<br></li></ul>

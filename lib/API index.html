@@ -2,7 +2,7 @@ All public API functions and variables are listed below. Unless otherwise stated
 <br>
 <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
   <tbody>
-    <tr><td style="vertical-align: top;">NEO_EXISTS<br></td><td style="vertical-align: top;">(Global) Boolean true when Neoloader has started. <br></td></tr><tr><td style="vertical-align: top;">NEO_UNINSTALL<br></td><td style="vertical-align: top;">(Global) Boolean false when Neoloader installing the first time, true when told to uninstall. otherwise, shouldn't exist.<br></td></tr><tr><td style="vertical-align: top;">[0] = "LME"<br></td><td style="vertical-align: top;">string defining the public table "lib" as a 'Library Management Engine'; used for verifying if Neoloader (or compatible alternative) is installed or not. See more in <a href="../overview.html">Overview</a><br></td></tr><tr><td style="vertical-align: top;">[1] = "Neoloader"<br></td><td style="vertical-align: top;">string defining the creator of public table "lib"; just like [0], this is meant for verifying Neoloader as the creator of the lib table (as opposed to any future alternatives)<br></td></tr><tr>
+    <tr><td style="vertical-align: top;">NEO_EXISTS<br></td><td style="vertical-align: top;">(Global) Boolean true when Neoloader has started. Not part of the LME API<br></td></tr><tr><td style="vertical-align: top;">NEO_UNINSTALL<br></td><td style="vertical-align: top;">(Global) Boolean false when Neoloader installing the first time, true when told to uninstall. otherwise, shouldn't exist. Not part of the LME API<br></td></tr><tr><td style="vertical-align: top;">[0] = "LME"<br></td><td style="vertical-align: top;">string defining the public table "lib" as a 'Library Management Engine'; used for verifying if Neoloader (or compatible alternative) is installed or not. See more in <a href="../overview.html">Overview</a><br></td></tr><tr><td style="vertical-align: top;">[1] = "Neoloader"<br></td><td style="vertical-align: top;">string defining the creator of public table "lib"; just like [0], this is meant for verifying Neoloader as the creator of the lib table (as opposed to any future alternatives)<br></td></tr><tr>
       <td style="vertical-align: top;"><a href="activate_mod/index.html">activate_mod</a><br>
       </td>
       <td style="vertical-align: top;">Launches the selected Mod
@@ -23,7 +23,7 @@ table from an INI file<br>
 functions can be run<br>
       </td>
     </tr>
-    <tr>
+    <tr><td style="vertical-align: top;"><a href="compare_sem_ver/index.html">compare_sem_ver</a><br></td><td style="vertical-align: top;">Compare two advanced version strings<br></td></tr><tr>
       <td style="vertical-align: top;"><a href="err_handle/index.html">err_handle</a><br>
       </td>
       <td style="vertical-align: top;">Functions similarly to Assert,
@@ -70,11 +70,11 @@ Neoloader<br>
       <td style="vertical-align: top;">Gets the latest version of a mod<br>
       </td>
     </tr>
-    <tr>
+    <tr><td style="vertical-align: top;"><a href="get_minor/index.html">get_minor</a><br></td><td style="vertical-align: top;">Gets the current minor version (additions to the API that don't change it)<br></td></tr><tr>
       <td style="vertical-align: top;"><a href="get_patch/index.html">get_patch</a><br>
       </td>
       <td style="vertical-align: top;">Gets the current patch version
-(additions to the API that don't change it)<br>
+(fixes to the API that don't add anything new and don't change it)<br>
       </td>
     </tr>
     <tr>
@@ -90,7 +90,7 @@ Neoloader<br>
 in Neoloader<br>
       </td>
     </tr>
-    <tr>
+    <tr><td style="vertical-align: top;"><a href="get_whole_ver/index.html">get_whole_ver</a><br></td><td style="vertical-align: top;">Get a version broken down into individual components<br></td></tr><tr>
       <td style="vertical-align: top;"><a href="is_exist/index.html">is_exist</a><br>
       </td>
       <td style="vertical-align: top;">Tests if a mod exists in
@@ -152,7 +152,7 @@ interface manager for Neoloader<br>
       <td style="vertical-align: top;">Register a new mod into Neoloader<br>
       </td>
     </tr>
-    <tr>
+    <tr><td style="vertical-align: top;"><a href="reload/index.html">reload</a><br></td><td style="vertical-align: top;">Trigger an interface reload<br></td></tr><tr><td style="vertical-align: top;"><a href="request_auth/index.html">request_auth</a><br></td><td style="vertical-align: top;">Obtain Neoloader's session auth key<br></td></tr><tr>
       <td style="vertical-align: top;"><a href="require/index.html">require</a><br>
       </td>
       <td style="vertical-align: top;">Delays a function until the

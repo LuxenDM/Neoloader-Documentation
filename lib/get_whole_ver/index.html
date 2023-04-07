@@ -1,0 +1,17 @@
+lib.get_whole_ver<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.get_whole_ver (string version) :: table version_data, table metadata<br></li>
+</ul>
+Description:<br>
+<ul>
+<li>Break down a semantic version string or similar and return as itemized tables<br></li>
+</ul>
+Arguments:<br>
+<ol>
+<li>string version: String to be broken apart<br></li></ol>
+Returns:<br>
+<ul>
+<li>table version_data: main version data, each individual number seperated into individual keys</li><li>table metadata: extra suffix attached to some version strings<br></li>
+</ul>
+Other notes:<br><ul><li>While this function was designed with Semantic versioning in mind, it will support in theory any version string where numbers are seperated by non numbers. The only restricted character is the hyphen (-), which denotes the beginning of metadata.</li><li>Currently, all metadata is stored in the first key of the metadata table. While it might seem more intuitive to just return a string comprising of the metadata, in the future this function may be able to break metadata into individual components if neccesary, so for long-term compatibility it will return a table.</li></ul>Examples of what to expect using this function:<br><ul><li>Pure semantic style: "1.4.4 -beta"</li><ul><li>{1, 4, 4}, {beta}</li></ul><li>VO Update versioning: "1.8.640.1"</li><ul><li>{1, 8, 640, 1}, {}</li></ul><li>Incremental Version Numbering: "4"</li><ul><li>{4},{}</li></ul><li>Release/date/build number: "r16y23m3 -b104"</li><ul><li>{16, 23, 3}, {b104}</li></ul></ul>As you can see, it should allow Neoloader to be versatile in handling a wide range of modder preferences, as long as their own individual styles remain consistant.<br>

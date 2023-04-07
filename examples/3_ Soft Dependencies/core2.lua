@@ -1,0 +1,1 @@
+lib.log_error("This file has no dependencies, but will activate the soft dependency in core.lua")

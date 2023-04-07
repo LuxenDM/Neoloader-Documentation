@@ -1,64 +1,103 @@
-
-Creating plugins compatible with Neoloader means following certain
+<big><big>Plugin Styles</big></big>:<br><br>Creating plugins compatible with Neoloader means following certain
 design principles, but the effort will provide benefits to your
-plugin's users.<br>
-First off, while normal plugins only require a single 'main.lua' file
-containing the plugin's code, in the usage of Neoloader a plugin will
-require three:<br>
-<table style="text-align: left; width: 40%;" border="1" cellpadding="2" cellspacing="2">
+plugin's users. Different templates are provided to suite the needs of
+different plugins. In all cases, though, the plugins to be managed
+through Neoloader need a declaration file - this is an INI file
+containing data that informs Neoloader of what a plugin is and how/when
+to load it. <a href="ini.html">The formatting of the declaration file
+can be explored here</a>.<br>
+<br><br><table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top; font-weight: bold;">Plugin Style<br></td><td style="vertical-align: top; font-weight: bold;">Style Traits<br></td></tr><tr><td style="vertical-align: top;">Neoloader Default Plugin Style<br></td><td style="vertical-align: top;">
+A _typical_ plugin made to get the most out of Neoloader will use a
+three-file system. In this setup, main.lua - the code that is run at
+standard load time - contains only the necessary commands to see if
+Neoloader exists and to register the plugin. The actual code to be
+executed is stored in another file, which is called during Neoloader's
+"Init" stage if various checks all return valid, based on the data
+provided in your declaration file. <br>
+
+<br>
+
+Obviously, while it is referred to as "Three-file" default, there is no
+reason to assume you must use ONLY three files; there is simply a
+minimum of three files expected in this system, and your code can call
+whatever files it wants from your plugin's core file.</td></tr><tr><td style="vertical-align: top;">Hybrid Plugin Style</td><td style="vertical-align: top;">
+Sometimes, plugins might want to run at standard execution time while
+still letting Neoloader manage their enabled/disabled state. Plugins
+designed this way should not be provided as function libraries, as
+Neoloader cannot control the execution time of these plugins. However,
+for plugins that will be at the end of a dependency tree, where nothing
+will be dependent on the code being executed, this is much less of a
+worry. While the default style above is reccomended, this method is
+also provided.<br>
+
+<br>
+
+In this method, the only files are main.lua and the declaration. The
+path value of the declaration file is empty, telling Neoloader there is
+nothing to run; instead, main.lua will institute its own checks after
+registry when executed by the default plugin loader at standard
+execution time. A properly designed main.lua will make sure to run its
+code ONLY if Neoloader says the load state should be enabled for this
+particular plugin (or if Neoloader is not available).<br>
+
+</td></tr><tr><td style="vertical-align: top;">Compatibility-Patched Plugin Style</td><td style="vertical-align: top;">
+Plugins that were not designed for Neoloader can still be made
+manageable through its interface using a utility called NeoPatcher.
+NeoPatcher applies a mix of the hybrid and default styles in order to
+make plugins manageable without breaking their compatibility.<br>
+
+<br>
+
+In a compatibility patch, a plugin's main.lua will be renamed to
+something else (main_patched.lua in the case of NeoPatcher), and a new
+main.lua and declaration file are created. The Declaration's path value
+will be blank, like a hybrid plugin, but in this case main.lua itself
+only institutes the checks necessary to access or deny main_patched.lua from running; the
+end result is the plugin running at its usual time and environment, but
+only if Neoloader says its supposed to load. Thus, maximum
+compatibility without changing the original code is achieved.</td></tr></tbody></table><br>Representations of each are provided in the Examples folder distributed with this documentation.<br><br><br>
+<br>
+<hr style="width: 100%; height: 2px;"><big><big>Converting standard plugins to be
+Neo-compatible<small><small>:</small></small></big></big><br>
+<br>
+Ordinary plugins are usually unable to run with Neoloader right out of
+the gate. This is due to a select few differences in the game's
+environment. Due to this, tools like NeoPatcher must set up null-path
+values in their declaration, and then handle the checking process
+themselves when the standard loader takes over. An example of how this works is provided in the examples folder distributed with this documentation (<span style="color: rgb(0, 0, 153); font-style: italic;">see 1_ Compatibility Style Example</span>). Listed below are known differences and possible fixes, should you wish to update the plugin instead of just patching it.<br>
+<br>
+<table style="text-align: left;" border="1" cellpadding="2" cellspacing="2">
   <tbody>
-    <tr>
-      <td style="vertical-align: middle; text-align: left;">
-      <ul>
-        <li>Main.lua</li>
-        <li>&lt;name&gt;.ini</li>
-        <li>&lt;name&gt;.lua</li>
-      </ul>
+    <tr><td style="vertical-align: top; font-weight: bold;">Area of incompatibility<br></td><td style="vertical-align: top; font-weight: bold;">Why the issue exists<br></td><td style="vertical-align: top; font-weight: bold;">Potential fixes<br></td></tr><tr>
+      <td style="vertical-align: top;">File Access<br>
       </td>
-      <td style="vertical-align: middle; text-align: center;"><img src="files.png" alt=""></td>
+      <td style="vertical-align: top;">During the standard loader's execution, loadfile/dofile will pre-pend the active working directory to any path provided. During Neoloader's execution, however, because it is loading using the interface system, it does not have this alteration provided. Plugins that expect prepended paths will obviously break when loaded during the Init loading phase.<br>
+      </td><td style="vertical-align: top;">Replace dofile with <a href="lib/resolve_file/index.html">lib.resolve_file</a>, which is capable of testing for multiple locations of where to find a file.<br><br>***Some functionality of dofile is currently missing from <a href="lib/resolve_file/index.html">lib.resolve_file</a>, such as passing arguments as local values. There is no loadfile alternative yet.<br></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Creating Global Variables<br>
+      </td>
+      <td style="vertical-align: top;">Plugins typically expect global values to be creatable when they run. While it is reasonable to expect Neo plugins to also have global creation access, it is <span style="font-style: italic;">possible</span> for Neoloader to delay a plugin from activating until after the PLUGINS_LOADED event occurs, depending on the configuration of the user's system and dependency fulfillment. It should be noted that in stock Neoloader, this will not occur, as plugin activation requires an auth token and is not triggered in neomgr.<br>
+      </td><td style="vertical-align: top;">Either test for globals to be locked (<a href="lib/get_gstate/index.html">lib.get_gstate()</a>.statelock == true) or use Declare() when using globals. The latter function is part of the base game, and is not reliant on Neoloader.<br></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Interface Incompatibility<br>
+      </td>
+      <td style="vertical-align: top;">This is less likely to be an issue for most plugin authors, but Neoloader does make it much easier to register custom interfaces, which may not provide 1 to 1 compatibility with the DefaultUI (especially when it comes to IUP structures)<br>
+      </td><td style="vertical-align: top;">Test for the default interface to be loaded (<a href="lib/get_gstate/index.html">lib.get_gstate()</a>.ifmgr == "vo-if") or check specifically for the IUP structures to be accessed. Interfaces may provide some form of compatibility layer, too, so it may be prudent to check for commonplace APIs or Neoloader libraries that can solve this problem.<br></td>
     </tr>
   </tbody>
 </table>
 <br>
 <br>
-In this case, main.lua is used exclusively to verify the registration
-process of your plugin; You can include other code in it, but this code
-will continue to be loaded by the old plugin loader and won't be
-managable by Neoloader.<br>
+<hr style="width: 100%; height: 2px;"><big><big>Function Libraries</big></big>:<br>
 <br>
-The INI file here is the plugin's "registration" details, and <a href="ini.html">the formatting can be viewed on this page</a>. This
-contains the data Neoloader needs for determining your plugin's load
-position, plus other optional information.<br>
+Plugins have historically been designed to be Monolithic, containing all functionality not provided by the base game. This has lead to sometimes duplicated code and plugins that don't mesh well with each other. However, Neoloader aims to provide a standardized system for facilitating communication between different plugins through the public function class. When a Neoloader plugin is registered, it is given a table where it can store public functions other plugins can then call. Multiple versions of the same plugin can even be loaded at the same time, as they each get their own table. Through this, function libraries can provide common code usable between many different plugins easily.<br><br>There are two officially recognised styles that this type of plugin can take: Distributable and Standalone.<br><br><table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top;">Library Style<br></td><td style="vertical-align: top;">Details<br></td><td style="vertical-align: top;">Functional limitations<br></td></tr><tr><td style="vertical-align: top;">Distributable Library<br></td><td style="vertical-align: top;">The Distributable Library is designed to be as self-contained as possible, and is distributed alongside plugins that rely on them. This makes more sense for small libraries focused on specific functionality.<br></td><td style="vertical-align: top;">Distributable libraries cannot assume their path; their declaration file must not provide a path, and if paths are needed for files, they must be found through <a href="lib/get_path/index.html">lib.get_path()</a>. The declaration file is registered by the plugin that is distributing the library.<br></td></tr><tr><td style="vertical-align: top;">Standalone Library<br></td><td style="vertical-align: top;">The Standalone Library is designed to be downloaded by the end user and is loaded as a plugin. This makes more sense for major libraries containing many files and/or a wide range of functionality.<br></td><td style="vertical-align: top;">Standalone libraries are declared and defined just like normal plugins.<br></td></tr></tbody></table><br>
+There is no reason a library cannot have both Distributable and Standalone releases, too, for instance if a library has a "lite" function set that is easily downloaded due to its small size, with an optional heavier function library that has more UI components or better on-demand fulfillment of plugin conflict resolution. For libraries like this, the Distributable version would have an always-lower version than the standalone version, and should be clearly marked.<br><br>In the end, it is up to both the library designer and the implementor to properly decide on best practices for determining which should be used and how to use them.<br><br>Function Libraries will use the <a href="lib/set_class/index.html">lib.set_class()</a> function to store their table of public functions and data, and plugins reliant on this data will use either <a href="lib/execute/index.html">lib.execute()</a> or <a href="lib/get_class/index.html">lib.get_class()</a> to retrieve this data. Please refer to the <a href="lib/API%20index.html">LME API document</a> to determine how to use each and which will serve you best.<br>
 <br>
-The third file is what would contain your actual mod's code. Once
-registered and activated, this is the file that is executed. The INI
-file should point to this, with a relative or absolute file path.<br>
+<hr style="width: 100%; height: 2px;"><big><big>Versioning</big></big>:<br>
+<br>As mentioned in the prior section, plugins can (and should) have version numbers associated with them. Neoloader is capable of processing any version string provided the following rules are met:<br><ol><li>Versions are identifiable by a numeric value</li><li>Subversions are seperated by a non-numeric value</li><li>A hyphen is exclusively used to seperate a version string from other metadata</li></ol>For example, take the semantic versioning string "1.0.2 -beta". This would break down into the following relevant data:<br><table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top;">Major<br></td><td style="vertical-align: top;">Minor<br></td><td style="vertical-align: top;">Patch<br></td><td style="vertical-align: top;">Metadata<br></td></tr><tr><td style="vertical-align: top;">1<br></td><td style="vertical-align: top;">0<br></td><td style="vertical-align: top;">2<br></td><td style="vertical-align: top;">beta<br></td></tr></tbody></table><br>This same data would be obtained if someone provided the version string "v1.0r2 -beta": in this case, the preceding v is dropped, 1 and 0 are seperated by a non-numeric value, and 0 and 2 are also seperated by a non-numeric value. As long as a hyphen is not used, Neoloader will be able to process the version string appropriately.<br><br>Obtaining a tabled breakdown of a version string, and comparing between two version strings, are done by the <a href="lib/get_whole_ver/index.html">lib.get_whole_ver()</a> and <a href="lib/compare_sem_ver/index.html">lib.compare_sem_ver()</a>.<br><br>While plugins can call on specific versions of other plugins through the various functions provided by the LME API, it is important to note that version zero is mostly reserved; when a plugin asks for the class table of a plugin and provides "0" as the version to call on, Neoloader will retrieve and pass on the class of the plugin that has the highest version present (provided it is set as loaded, of course). Version "0.0" would not trigger this, as it would not be version "0", nor would version "0 -dist".<br>
 <br>
+It is suggested that versions provided to Neoloader be in&nbsp;<a href="https://semver.org" target="_blank">Semantic Versioning‘</a> - this is not for Neoloader's sake, but for plugin authors and end-users, so they can better recognise differences in provided plugins. However, in the end, as long as plugins use the same formatting style between different versions of the same plugin, then Neoloader will be able to process them correctly.<br>
 <br>
-<br>
-<br>
-<hr style="width: 100%; height: 2px;">Converting plugins *can* be
-pretty simple, if you only want to manage your existing mods using
-Neoloader.<br>
-<ul>
-  <li>If your mod accesses other files, you will need to change how
-files are accessed. Neoloader loads BEFORE the standard mod loader, so
-dofile/loadfile do not automatically contain preset paths. Neoloader
-provides lib.resolve_file() to improve potential file access, allowing
-multiple attempts at locating a file.</li>
-</ul>
-In order to convert your old plugins to be managed through Neoloader,
-just follow these steps:<br>
-<ol>
-  <li>Rename your main.lua file</li>
-  <ul>
-    <li>WHAT you rename it to doesn't matter, other than that you will
-be providing this name in the mod's registration file</li>
-  </ul>
-  <li>Create and complete a mod registration file describing your
-plugin (see <a href="ini.html">INI registration</a> for more
-information)</li>
-  <li>Create a new main.lua file that registers your mod with Neoloader</li>
-</ol>
-(insert tricks for keeping plugins Neoloader-not-dependent below)<br>
-<br>
+<hr style="width: 100%; height: 2px;"><big><big>Dependency Declaration</big></big>:<br><br>Neoloader allows plugins to declare dependencies on other plugins, and will determine the appropriate time to load them as a result. Dependencies can be declared two different ways; the resultant plugin will often define something as a Hard or a Soft dependency based on which method is used.<br><br><table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top;">Dependency Style<br></td><td style="vertical-align: top;">Definition<br></td></tr><tr><td style="vertical-align: top;">Hard Dependency<br></td><td style="vertical-align: top;">This plugin requires this dependency to be completely fulfilled before it can run<br></td></tr><tr><td style="vertical-align: top;">Soft Dependency<br></td><td style="vertical-align: top;">This plugin requires this dependency for additional functionality<br></td></tr></tbody></table><br>The first method, Hard Dependency, will be much more common. You declare hard dependencies directly in a plugin's declaration file, and the plugin itself will never load unless they are fulfilled. Neoloader will figure out what order plugins should load in to have their dependencies fulfilled, as long as the dependencies are present and set to load.<br><br>The second method, Soft Dependency, is meant to delay specific functions from running until a dependency is fulfilled. This is best for when you want to optionally provide functionality based on the presence or lack of a library, but the functionality provided is not necessary for the working state of your plugin. Soft Dependencies are set through using the <a href="lib/require/index.html">lib.require()</a> function.<br><br><br><br><br><br><br><br><br><br><br><br><br>

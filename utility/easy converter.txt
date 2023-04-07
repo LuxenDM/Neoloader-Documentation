@@ -1,1 +1,0 @@
-TODO: This'll be a tool where you can drag and drop your plugin, fill in some information, and it'll make the minor changes to provide basic compatibility with Neoloader.

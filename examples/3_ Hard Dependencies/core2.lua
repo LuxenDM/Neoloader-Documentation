@@ -1,0 +1,1 @@
+lib.log_error("This file has no dependencies, but core.lua is reliant on it")

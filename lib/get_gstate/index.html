@@ -26,25 +26,130 @@ Table Definitions:<br>
       <td style="vertical-align: top;">version<br>
       </td>
       <td style="vertical-align: top;">unique version information of
-the currently installed Neoloader instance
+the currently installed Neoloader instance </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">API<br>
+      </td>
+      <td style="vertical-align: top;">LME API (also returned by
+get_API)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">minor<br>
+      </td>
+      <td style="vertical-align: top;">LME minor version (also returned
+by get_minor)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">patch<br>
+      </td>
+      <td style="vertical-align: top;">LME patch version (also returned
+by get_patch<br>
       </td>
     </tr>
     <tr>
       <td style="vertical-align: top;">pathlock<br>
       </td>
-      <td style="vertical-align: top;">A boolean defining if standard dofile/loadfile have preset paths (this occurs during the default plugin loader)<br></td>
+      <td style="vertical-align: top;">A boolean defining if standard
+dofile/loadfile have preset paths (this occurs during the default
+plugin loader)<br>
+      </td>
     </tr>
     <tr>
       <td style="vertical-align: top;">statelock<br>
       </td>
-      <td style="vertical-align: top;">A boolean defining if globals can be assigned normally, or if declare() is neccesary<br>
+      <td style="vertical-align: top;">A boolean defining if globals
+can be assigned normally, or if declare() is neccesary<br>
       </td>
-    </tr><tr><td style="vertical-align: top;">manager<br></td><td style="vertical-align: top;">The mod_ID of the current management interface for Neoloader<br></td></tr><tr><td style="vertical-align: top;">ifmgr<br></td><td style="vertical-align: top;">The mod_ID of the current interface manager for Neoloader<br>if no interface manager exists, this will return vo-if<br></td></tr><tr><td style="vertical-align: top;">notifications<br></td><td style="vertical-align: top;">(depreciate?) A list of all notification states sent to Neoloader<br></td></tr><tr><td style="vertical-align: top;">log<br></td><td style="vertical-align: top;">The complete data log in Neoloader<br></td></tr><tr><td style="vertical-align: top;">modlist<br></td><td style="vertical-align: top;">A list of every mod currently managed by Neoloader<br></td></tr><tr><td style="vertical-align: top;">mgr_list<br></td><td style="vertical-align: top;">A list of all mods that can be set as Neoloader management interfaces<br></td></tr><tr><td style="vertical-align: top;">if_list<br></td><td style="vertical-align: top;">A list of all mods that can be set as Neoloader interface managers<br></td></tr>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">manager<br>
+      </td>
+      <td style="vertical-align: top;">The mod_ID of the current
+management interface for Neoloader<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ifmgr<br>
+      </td>
+      <td style="vertical-align: top;">The mod_ID of the current
+interface manager for Neoloader<br>
+if no interface manager exists, this will return vo-if<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">notifications<br>
+      </td>
+      <td style="vertical-align: top;">A list of all
+notification states sent to Neoloader.***<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">log<br>
+      </td>
+      <td style="vertical-align: top;">The complete data log in
+Neoloader<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">modlist<br>
+      </td>
+      <td style="vertical-align: top;">A list of every mod currently
+managed by Neoloader<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">mgr_list<br>
+      </td>
+      <td style="vertical-align: top;">A list of all mods that can be
+set as Neoloader management interfaces<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">if_list<br>
+      </td>
+      <td style="vertical-align: top;">A list of all mods that can be
+set as Neoloader interface managers<br>
+      </td>
+    </tr>
   </tbody>
 </table>
 <br>
 Other notes:<br>
 <ul>
-  <li><br>
-  </li>
+  <li>***These tables are references to, not copies of, the tables in Neoloader, as creating copies of these potentially massive tables could lock up a user's system. <br></li><li>the version table and the API/minor/patch version are both styled
+as "semantic version" identifiers, but are not neccesarily synced.</li>
+  <ul>
+    <li>The API/minor/patch values are specific to the version of LME
+API supported.<br>
+    </li>
+  </ul>
+  <ul>
+    <li>The "version" table defines the version of Neoloader installed,
+which implemented the LME API</li>
+  </ul>
 </ul>
+As long as plugins target a compatible LME API, it should not matter
+what version of Neoloader is installed, or if a different utility is
+used instead.<br>
+<br>
+From the April 2023 Beta release notes when this differentiation was
+defined:<br>
+<table style="text-align: left;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">This is not representative of
+the API for "Library Management Engines", but rather is a version
+specific to Neoloader, which implements the LME api. In effect, this
+value should be seen as inconsequential to any plugins designed for use
+of the LME structure. Hence why it is not synced with
+lib.get_API/minor/patch functions, and is a seperate value in
+lib.get_gstate.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>

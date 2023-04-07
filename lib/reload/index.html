@@ -1,0 +1,18 @@
+lib.reload<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.reload () :: Game Reloads<br></li>
+</ul>
+Description:<br>
+<ul>
+<li>Forces an interface reload<br></li>
+</ul>
+Arguments:<br>
+<ol>
+<li>none<br></li></ol>
+Returns:<br>
+<ul>
+<li>none<br>
+</li>
+</ul>
+Other notes:<br><ul><li>Neoloader will attempt to clean up all user commands not present in the "zcom.lua" file. Whether this is still neccesary is unknown, but for a time the game wasn't cleaning up commands properly, resulting in 'ghost commands' attempting to access data that had been garbage collected by the lua engine. This functionality remains in Neoloader to help make sure plugins are unloaded as much as possible, just in case.</li><li>Neoloader registers a user command "reload" which points to this function.<br></li></ul>

@@ -1,14 +1,14 @@
-Neoloader uses ini files to handle registration of mods. These INI
+Neoloader uses ini files to handle registration of mods, referred to as plugin declarations. These INI
 files have to follow certain standards, in order to ensure compatibility for Neoloader.<br>
 <br>
-Example of a registration file:<br>
+Example of a declaration file:<br>
 <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top;"><address>[modreg]</address><address>
 
-type=library</address><address>
+type=utility</address><address>
 
-id=glib</address><address>
+id=example_mod</address><address>
 
-name=General Library</address><address>
+name=Interface Exporter<br></address><address>
 
 version=1</address><address>
 API=3</address><address>
@@ -16,7 +16,7 @@ API=3</address><address>
 
 author=Luxen</address><address>
 
-website=http://vendetta-online.com/</address><address>
+website=http://voupr.spenced.com/plugin.php?name=csctf</address><address>
 
 path=mod.lua</address>
 
@@ -50,22 +50,21 @@ header containing most of a mod's registration data</td>
       <td style="vertical-align: top;">type<br>
       </td>
       <td style="vertical-align: top;">A descriptor of what a mod "is".
-This can be used for sorting mods in the in-game manager. currently
-unused.</td>
+This can be used for sorting mods in an in-game manager.</td>
     </tr>
     <tr>
 
 
 
 
-      <td style="vertical-align: top;">id<br>
+      <td style="vertical-align: top;">*id<br>
 
       </td>
       <td style="vertical-align: top;">this is the access ID for a mod;
 any other mod will refer to this id. "null" is invalid.</td>
     </tr>
     <tr>
-      <td style="vertical-align: top;">name<br>
+      <td style="vertical-align: top;">*name<br>
 
 
 
@@ -76,7 +75,7 @@ mod, what a user expects to see.</td>
 
     </tr>
     <tr>
-      <td style="vertical-align: top;">version<br>
+      <td style="vertical-align: top;">*version<br>
       </td>
 
 
@@ -89,7 +88,7 @@ result in different behavior, so start at 1. For more information, see
 
     </tr>
 
-    <tr><td style="vertical-align: top;">API<br></td><td style="vertical-align: top;">This should match the current API of Neoloader<br></td></tr><tr>
+    <tr><td style="vertical-align: top;">*API<br></td><td style="vertical-align: top;">This should match the current API of Neoloader<br></td></tr><tr>
       <td style="vertical-align: top;">author<br>
 
       </td>
@@ -118,9 +117,9 @@ quickly access this website to check for updates </td>
 code file. If no path and only a
 file name is provided, the path of the INI file is used instead. If
 your mod is a library to be distributed with other mods, don't use a
-path, only the file name. </td>
+path, only the file name.<br><br>***If no file is provided, Neoloader will assume that the plugin's main.lua file provides the necessary checks; the file will be marked appropriately. This is useful for plugins that would have compatibility issues running before the standard plugin loader - for instance, non-Neoloader plugins patched through the NeoPatcher utility. See more in <a href="design.html">plugin design tips</a><br> </td>
 
-    </tr>
+    </tr><tr><td colspan="2" rowspan="1" style="vertical-align: top;">Other data can be present, but these are the preset items that are read when Neoloader runs lib.build_ini. To access any other data, lib.mod_read_str can be used. <br><br>Values marked with a * are required, or the mod will be rejected from the registration process.<br></td></tr>
 
   </tbody>
 

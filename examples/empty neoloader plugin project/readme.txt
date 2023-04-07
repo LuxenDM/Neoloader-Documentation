@@ -1,1 +1,0 @@
-This is an empty project already set up for you. Just modify each file to point to the appropriate folder and change the definitions in the registration, and place your mod's code in mod.lua.

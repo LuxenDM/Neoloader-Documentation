@@ -1,0 +1,1 @@
+lib.log_error("This file was launched by Neoloader if it was set as loaded in the config! THis is how the Default Plugin Style works!")
