@@ -2,22 +2,68 @@
 lib.log_error<br>
 <hr style="width: 100%; height: 2px;">Definition:<br>
 <ul>
-<li>lib.log_error (message) :: nil<br></li>
+  <li>lib.log_error (message, [alert_level], [mod_id, mod_version]) ::
+nil<br>
+  </li>
 </ul>
 Description:<br>
 <ul>
-<li>Stores the message in Neoloader's message logging table<br></li>
+  <li>Stores the message in Neoloader's message logging table. The
+message will be formatted if configured to do so by the LME. The
+message can also be stored in a particular mod's error table if the id
+and version are provided.<br>
+  </li>
 </ul>
 Arguments:<br>
 <ol>
-<li>string message: The string to store<br></li></ol>
+  <li>string message: The string to store</li>
+  <li>number alert_level: The type of error<br>
+    <table style="text-align: left;" border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">Alert 1<br>
+          </td>
+          <td style="vertical-align: top;">Debugging<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Alert 2<br>
+          </td>
+          <td style="vertical-align: top;">Info<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Alert 3<br>
+          </td>
+          <td style="vertical-align: top;">Warning<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Alert 4<br>
+          </td>
+          <td style="vertical-align: top;">Error<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>string mod_id: The internal id of the mod to store this log in</li>
+  <li>string mod_ver: The version of the mod to store this log in<br>
+  </li>
+</ol>
 Returns:<br>
 <ul>
-<li>nil<br>
-</li>
+  <li>nil<br>
+  </li>
 </ul>
 Other notes:<br>
 <ul>
-<li>If the user has "Echo Logging" enabled, the message will also be printed to the console. THis is the default behavior of Neoloader.<br>
-</li>
+  <li>If the user has "Echo Logging" enabled, the message will also be
+printed to the console. This is the default behavior of Neoloader.</li>
+  <li>The "Formatting" of a message is to make logged errors more in
+line with how industry standard logs appear. This can be disabled
+through the config option "dbgFormatting=NO"</li>
+  <li>If the LME's log ignore level is above the provided alert level,
+the log is discarded. The default is to keep alert 2 and above.<br>
+  </li>
 </ul>

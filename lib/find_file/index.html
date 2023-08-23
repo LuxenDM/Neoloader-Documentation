@@ -1,0 +1,16 @@
+lib.find_file<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.find_file (filepath, ...) :: nil</li>
+</ul>
+Description:<br>
+<ul>
+<li>Attempts to find a file using a variety of path options. This can be useful when you do not want to instantly run lua code with lib.resolve_file (such as using your own method of running the code)<br>
+</li>
+</ul>
+Arguments:<br>
+<ol><li>string filepath: Primary file path to check<br></li><li>string ...: alternate path(s) to check<br></li>
+</ol>
+Returns:<br>
+<ul>
+<li>string valid_path: First valid path detected<br></li><li>table all_valid: table containing every valid path detected</li><li>../ and ../../ are checked for every provided path entry as well, in case the path is being adjusted by the Vendetta Online sandbox<br></li></ul><br>

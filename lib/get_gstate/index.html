@@ -1,4 +1,3 @@
-
 lib.get_gstate<br>
 <hr style="width: 100%; height: 2px;">Definition:<br>
 <ul>
@@ -29,7 +28,7 @@ Table Definitions:<br>
 the currently installed Neoloader instance </td>
     </tr>
     <tr>
-      <td style="vertical-align: top;">API<br>
+      <td style="vertical-align: top;">major<br>
       </td>
       <td style="vertical-align: top;">LME API (also returned by
 get_API)<br>
@@ -49,7 +48,7 @@ by get_minor)<br>
 by get_patch<br>
       </td>
     </tr>
-    <tr>
+    <tr><td style="vertical-align: top;">lmever<br></td><td style="vertical-align: top;">LME version string (for use in lib.compare_sem_ver)<br></td></tr><tr>
       <td style="vertical-align: top;">pathlock<br>
       </td>
       <td style="vertical-align: top;">A boolean defining if standard
@@ -90,11 +89,11 @@ notification states sent to Neoloader.***<br>
       <td style="vertical-align: top;">log<br>
       </td>
       <td style="vertical-align: top;">The complete data log in
-Neoloader<br>
+Neoloader.***<br>
       </td>
     </tr>
     <tr>
-      <td style="vertical-align: top;">modlist<br>
+      <td style="vertical-align: top;">pluginlist<br>
       </td>
       <td style="vertical-align: top;">A list of every mod currently
 managed by Neoloader<br>
@@ -113,7 +112,7 @@ set as Neoloader management interfaces<br>
       <td style="vertical-align: top;">A list of all mods that can be
 set as Neoloader interface managers<br>
       </td>
-    </tr>
+    </tr><tr><td style="vertical-align: top;">newstate<br></td><td style="vertical-align: top;">This is the state all new mods will default to loading as<br></td></tr><tr><td style="vertical-align: top;">format_log<br></td><td style="vertical-align: top;">YES if the log_error output will be formatted<br></td></tr><tr><td style="vertical-align: top;">log_level<br></td><td style="vertical-align: top;">The "ignored" level of the log_error function<br></td></tr>
   </tbody>
 </table>
 <br>

@@ -1,0 +1,1 @@
+print("This was the original file of a plugin that got patched!")

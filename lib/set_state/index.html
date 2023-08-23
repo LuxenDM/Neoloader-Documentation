@@ -1,0 +1,23 @@
+lib.set_load<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.set_state (auth key, mod_id, mod_version, load_state) :: nil</li>
+</ul>
+Description:<br>
+<ul>
+<li>Changes the mod's ability to load to the new load state.<br>
+</li>
+</ul>
+Arguments:<br>
+<ol>
+<li>auth key: The auth key must be provided for this functionality<br></li><li>string mod_id: the mod who's load state will be adjusted<br></li><li>string mod_version: the version of the mod who's load state will be adjusted<br></li><li>string load_state: the new load state for this mod. Valid options are "YES", "NO", "AUTH", and "FORCE".<br></li>
+</ol>
+Returns:<br>
+<ul>
+<li>nil<br>
+</li>
+</ul>
+Other notes:<br>
+<ul>
+<li>If the auth key is incorrect, this function fails silently</li><li>If the new load state is not valid, "NO" (do not load) is used instead<br></li>
+</ul>

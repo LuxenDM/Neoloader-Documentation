@@ -1,8 +1,7 @@
-
 lib.resolve_file<br>
 <hr style="width: 100%; height: 2px;">Definition:<br>
 <ul>
-<li>lib.resolve_file (file, path, path_2) :: nil</li>
+<li>lib.resolve_file (path, ...) :: nil</li>
 </ul>
 Description:<br>
 <ul>
@@ -11,13 +10,8 @@ Description:<br>
 </ul>
 Arguments:<br>
 <ol>
-<li>string file: file name to be accessed</li><li>string path: path to the file to be accessed</li><li>string path_2: alternate path to check<br></li>
+<li>string filepath: path to the file to be accessed</li><li>string ...: alternate path(s) to check<br></li>
 </ol>
 Returns:<br>
 <ul>
-<li>boolean status: true if the file loaded successfully<br></li><li>...: results of the file, or a string error message<br>
-</li>
-</ul>
-Other notes:<br>
-<ul>
-<li>if path is nil, this function attempts to split the file argument into a path/file pair for you.</li></ul>
+<li>boolean status: true if the file loaded successfully<br></li><li>...: results of the file, or a string error message</li></ul>notes:<br><ul><li>This function uses lib.find_file to verify the file exists, and will always execute the first found path.</li><li>The file being executed will likely be loaded with pcall(), depending on the LME's "protectResolveFile" flag<br></li></ul>

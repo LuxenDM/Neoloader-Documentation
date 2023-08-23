@@ -1,4 +1,3 @@
-
 lib.require<br>
 <hr style="width: 100%; height: 2px;">Definition:<br>
 <ul>
@@ -11,7 +10,7 @@ Description:<br>
 </ul>
 Arguments:<br>
 <ol>
-<li>table requirements: A list of {mod_IDs, mod_versions} that must be met; these must be loaded and activated, not just present.<br></li><li>function callback: The function to be delayed<br></li>
+<li>table requirements: A list of {mod_IDs, mod_versions} that must be met; these must be loaded and activated, not just present.<br>Example:<br>{ {name="neomgr", version="1"}, {name="glib", version=2"} }<br>This would make a soft dependency on both neomgr v1 and glib v2 being loaded.<br></li><li>function callback: The function to be delayed<br></li>
 </ol>
 Returns:<br>
 <ul>
@@ -20,5 +19,4 @@ Returns:<br>
 </ul>
 Other notes:<br>
 <ul>
-<li>This function provides a method to introduce "soft dependencies" - extended functionality for mods that your plugin can utilize but aren't neccesary for its load state.</li><li>The function lib.check_queue is called every time a mod is activated; it is this function that tests if the dependency table provided has been met or not, utilizing lib.resolve_dep_table<br></li>
-</ul>
+<li>This function provides a method to introduce "soft dependencies" - extended functionality for mods that your plugin can utilize but aren't neccesary for its load state.</li><li>The function lib.check_queue is called every time a mod is activated; it is this function that tests if the dependency table provided has been met or not, utilizing lib.resolve_dep_table</li><li>If you need to make a range of versions valid, add a key ver_max="version" to the table. the previous version="version" will become a minimum requirement.<br></li></ul>

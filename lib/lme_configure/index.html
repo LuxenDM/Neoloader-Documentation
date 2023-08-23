@@ -1,0 +1,20 @@
+lib.lme_configure<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.lme_configure (config_option, new_value, [auth_key]) :: nil</li>
+</ul>
+Description:<br>
+<ul>
+<li>Configures the LME settings and saves the value<br>
+</li>
+</ul>
+Arguments:<br>
+<ol>
+<li>string config_option: The identifier of the configuration option to change</li><li>string or number new_value: the value to be changed to. The value will be converted to a string or number as necessary.<br></li><li>auth key: Some options require the auth key be provided or the change will not occur<br></li>
+</ol>
+Returns:<br>
+<ul>
+<li>nil if successful, false if the config option doesn't exist</li>
+</ul>
+Other notes:<br>
+<ul><li>The following options require the auth key be provided: defaultLoadState, listPresorted, current_if, current_mgr<br></li></ul>

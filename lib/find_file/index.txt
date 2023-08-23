@@ -1,0 +1,24 @@
+lib.resolve_file
+
+Definition:
+	lib.resolve_file(file, |path|) -> true|nil, ???|string
+Description:
+	Attempts to load and execute the provided file, accounting for how Vendetta Online's file seeking path can change based on current game state
+	if the file can be loaded, it is executed
+Arguments:
+	file: file name to launch
+	path: path to the file
+	example: "index.lua", "plugins/dummy/"
+	
+	if path is not provided, file is assumed to be path_to_file
+	example: "plugins/dummy/index.lua"
+Returns:
+	if the file was found:
+		boolean: true
+		???: any arguments returned by the file executed
+	if the file is not found:
+		boolean: false
+		string: error message
+
+issues:
+	

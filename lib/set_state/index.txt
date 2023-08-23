@@ -1,0 +1,17 @@
+lib.set_class
+
+Definition:
+	lib.set_class (id, version, function_table) -> nil
+Description:
+	Sets the provided table as the mod's function table
+Arguments:
+	id = string ID of the activated mod
+	version = string version of the activated mod
+	function_table = table to be stored
+Returns:
+	nil
+
+notes:
+	non-function values in the function table are allowed; lib.execute will return the item instead of attempting to function() it.
+	
+	if the mod is set as "locked", this function will fail.

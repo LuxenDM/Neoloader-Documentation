@@ -1,0 +1,20 @@
+lib.set_waiting<br>
+<hr style="width: 100%; height: 2px;">Definition:<br>
+<ul>
+<li>lib.set_waiting (mod_id, mod_version, wait_state, freeze_key) :: nil</li>
+</ul>
+Description:<br>
+<ul>
+<li>Freezes or releases the pending execution state of mods dependent on the provided mod.<br>
+</li>
+</ul>
+Arguments:<br>
+<ol>
+<li>string mod_id: the mod to be frozen<br></li><li>string mod_version: the version of the mod to be frozen<br></li><li>string wait_state: "YES" to freeze the mod, "NO" to release the mod</li><li>freeze_key: any value to act as a lock on this mod's dependents<br></li>
+</ol>
+Returns:<br>
+<ul>
+<li>nil<br>
+</li>
+</ul>
+Other notes:<br><ul><li>This function is vital for plugins that expect to do a lot of execution after the LME Init phase, such as any mod that expects to run during the default mod loader sequence.<br></li></ul>
